@@ -31,6 +31,7 @@
 		27CA29982BE366380078A172 /* ProductCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29972BE366380078A172 /* ProductCategoryService.swift */; };
 		27CA299C2BE369E80078A172 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA299B2BE369E80078A172 /* Alamofire */; };
 		27CA299E2BE369E80078A172 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA299D2BE369E80078A172 /* AlamofireDynamic */; };
+		27CA29A12BE371E10078A172 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29A02BE371E10078A172 /* MainPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		27CA298F2BE362BF0078A172 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		27CA29942BE364480078A172 /* MainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
 		27CA29972BE366380078A172 /* ProductCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategoryService.swift; sourceTree = "<group>"; };
+		27CA29A02BE371E10078A172 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			children = (
 				27CA298C2BE35DA60078A172 /* Model */,
 				27CA29992BE368AA0078A172 /* View */,
+				27CA299F2BE371CA0078A172 /* Presenter */,
 				27CA29962BE366200078A172 /* Service */,
 			);
 			path = Main;
@@ -194,6 +197,14 @@
 				27CA297E2BE110850078A172 /* MainViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		27CA299F2BE371CA0078A172 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29A02BE371E10078A172 /* MainPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +302,7 @@
 				27583E602BE0F64600F490F9 /* EcoMarket.xcdatamodeld in Sources */,
 				27583E562BE0F64600F490F9 /* AppDelegate.swift in Sources */,
 				27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */,
+				27CA29A12BE371E10078A172 /* MainPresenter.swift in Sources */,
 				27CA298E2BE35DBB0078A172 /* ProductCategory.swift in Sources */,
 				27CA29902BE362BF0078A172 /* MainViewCell.swift in Sources */,
 				27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */,

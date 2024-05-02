@@ -8,11 +8,15 @@
 import SnapKit
 import UIKit
 
+protocol MainViewControllerProtocol: AnyObject {
+    var presenter: MainPresenter? { get set }
+    func reloadCategories()
+}
+
 final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
-    private var categories: [ProductCategory] = []
-    private var prodyctCategoryService = ProductCategoryService()
+    var presenter: MainPresenter?
 
     // MARK: - UI
     private lazy var layout: UICollectionViewFlowLayout = {
@@ -53,7 +57,9 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        getCategories()
+        presenter = MainPresenter()
+        presenter?.view = self
+        presenter?.viewDidLoad()
     }
 }
 
@@ -72,21 +78,10 @@ private extension MainViewController {
     }
 }
 
-// MARK: - Private Extension - MainViewController
-private extension MainViewController {
-    // MARK: - Get Categories
-    func getCategories() {
-        prodyctCategoryService.getCategories { result in
-            switch result {
-            case .success(let categories):
-                DispatchQueue.main.async { [weak self] in
-                    self?.categories = categories
-                    self?.collectionView.reloadData()
-                }
-            case.failure(let error):
-                print("Error fetching categories: \(error)")
-            }
-        }
+// MARK: - MainViewControllerProtocol
+extension MainViewController: MainViewControllerProtocol {
+    func reloadCategories() {
+        collectionView.reloadData()
     }
 }
 
@@ -98,7 +93,8 @@ extension MainViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        categories.count
+
+        return presenter?.categories.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -108,7 +104,9 @@ extension MainViewController: UICollectionViewDataSource {
             for: indexPath) as? MainViewCell else {
             fatalError("Could not cast to MainViewCell")
         }
-        let model = categories[indexPath.item]
+        guard  let model = presenter?.categories[indexPath.item] else {
+            return UICollectionViewCell()
+        }
         cell.configureCell(with: model)
         return cell
     }
