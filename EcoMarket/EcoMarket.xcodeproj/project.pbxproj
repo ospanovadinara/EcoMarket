@@ -22,6 +22,15 @@
 		27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29802BE110A20078A172 /* BasketViewController.swift */; };
 		27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29822BE110C30078A172 /* HistoryViewController.swift */; };
 		27CA29852BE110D90078A172 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29842BE110D90078A172 /* InfoViewController.swift */; };
+		27CA29892BE35D780078A172 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA29882BE35D780078A172 /* SnapKit */; };
+		27CA298B2BE35D780078A172 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA298A2BE35D780078A172 /* SnapKit-Dynamic */; };
+		27CA298E2BE35DBB0078A172 /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA298D2BE35DBB0078A172 /* ProductCategory.swift */; };
+		27CA29902BE362BF0078A172 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA298F2BE362BF0078A172 /* MainViewCell.swift */; };
+		27CA29932BE3638B0078A172 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA29922BE3638B0078A172 /* Kingfisher */; };
+		27CA29952BE364480078A172 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29942BE364480078A172 /* MainHeader.swift */; };
+		27CA29982BE366380078A172 /* ProductCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29972BE366380078A172 /* ProductCategoryService.swift */; };
+		27CA299C2BE369E80078A172 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA299B2BE369E80078A172 /* Alamofire */; };
+		27CA299E2BE369E80078A172 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA299D2BE369E80078A172 /* AlamofireDynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +51,10 @@
 		27CA29802BE110A20078A172 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		27CA29822BE110C30078A172 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		27CA29842BE110D90078A172 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		27CA298D2BE35DBB0078A172 /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
+		27CA298F2BE362BF0078A172 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
+		27CA29942BE364480078A172 /* MainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
+		27CA29972BE366380078A172 /* ProductCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategoryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27CA29932BE3638B0078A172 /* Kingfisher in Frameworks */,
+				27CA299C2BE369E80078A172 /* Alamofire in Frameworks */,
+				27CA299E2BE369E80078A172 /* AlamofireDynamic in Frameworks */,
+				27CA29892BE35D780078A172 /* SnapKit in Frameworks */,
+				27CA298B2BE35D780078A172 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +128,9 @@
 		27CA29792BE1100B0078A172 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				27CA297E2BE110850078A172 /* MainViewController.swift */,
+				27CA298C2BE35DA60078A172 /* Model */,
+				27CA29992BE368AA0078A172 /* View */,
+				27CA29962BE366200078A172 /* Service */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -150,6 +170,32 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		27CA298C2BE35DA60078A172 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27CA298D2BE35DBB0078A172 /* ProductCategory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27CA29962BE366200078A172 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29972BE366380078A172 /* ProductCategoryService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		27CA29992BE368AA0078A172 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29942BE364480078A172 /* MainHeader.swift */,
+				27CA298F2BE362BF0078A172 /* MainViewCell.swift */,
+				27CA297E2BE110850078A172 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,6 +212,13 @@
 			dependencies = (
 			);
 			name = EcoMarket;
+			packageProductDependencies = (
+				27CA29882BE35D780078A172 /* SnapKit */,
+				27CA298A2BE35D780078A172 /* SnapKit-Dynamic */,
+				27CA29922BE3638B0078A172 /* Kingfisher */,
+				27CA299B2BE369E80078A172 /* Alamofire */,
+				27CA299D2BE369E80078A172 /* AlamofireDynamic */,
+			);
 			productName = EcoMarket;
 			productReference = 27583E522BE0F64600F490F9 /* EcoMarket.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +247,11 @@
 				Base,
 			);
 			mainGroup = 27583E492BE0F64600F490F9;
+			packageReferences = (
+				27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				27CA29912BE3638B0078A172 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				27CA299A2BE369E80078A172 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 27583E532BE0F64600F490F9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -209,8 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27583E652BE0F64800F490F9 /* LaunchScreen.storyboard in Resources */,
-				27583E712BE103AD00F490F9 /* TTNormsPro-Bold.ttf in Resources */,
 				27583E622BE0F64800F490F9 /* Assets.xcassets in Resources */,
+				27583E712BE103AD00F490F9 /* TTNormsPro-Bold.ttf in Resources */,
 				27583E722BE103AF00F490F9 /* TTNormsPro-Medium.ttf in Resources */,
 				27583E732BE103B100F490F9 /* TTNormsPro-Regular.ttf in Resources */,
 			);
@@ -228,9 +286,13 @@
 				27583E772BE1061C00F490F9 /* Colors.swift in Sources */,
 				27583E752BE1044300F490F9 /* Fonts.swift in Sources */,
 				27CA29852BE110D90078A172 /* InfoViewController.swift in Sources */,
+				27CA29952BE364480078A172 /* MainHeader.swift in Sources */,
+				27CA29982BE366380078A172 /* ProductCategoryService.swift in Sources */,
 				27583E602BE0F64600F490F9 /* EcoMarket.xcdatamodeld in Sources */,
 				27583E562BE0F64600F490F9 /* AppDelegate.swift in Sources */,
 				27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */,
+				27CA298E2BE35DBB0078A172 /* ProductCategory.swift in Sources */,
+				27CA29902BE362BF0078A172 /* MainViewCell.swift in Sources */,
 				27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */,
 				27583E582BE0F64600F490F9 /* SceneDelegate.swift in Sources */,
 			);
@@ -443,6 +505,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		27CA29912BE3638B0078A172 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		27CA299A2BE369E80078A172 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27CA29882BE35D780078A172 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		27CA298A2BE35D780078A172 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		27CA29922BE3638B0078A172 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27CA29912BE3638B0078A172 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		27CA299B2BE369E80078A172 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27CA299A2BE369E80078A172 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		27CA299D2BE369E80078A172 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27CA299A2BE369E80078A172 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		27583E5E2BE0F64600F490F9 /* EcoMarket.xcdatamodeld */ = {

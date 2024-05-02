@@ -12,6 +12,7 @@ final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
     private var categories: [ProductCategory] = []
+    private var prodyctCategoryService = ProductCategoryService()
 
     // MARK: - UI
     private lazy var layout: UICollectionViewFlowLayout = {
@@ -52,6 +53,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        getCategories()
     }
 }
 
@@ -74,7 +76,17 @@ private extension MainViewController {
 private extension MainViewController {
     // MARK: - Get Categories
     func getCategories() {
-        //TODO
+        prodyctCategoryService.getCategories { result in
+            switch result {
+            case .success(let categories):
+                DispatchQueue.main.async { [weak self] in
+                    self?.categories = categories
+                    self?.collectionView.reloadData()
+                }
+            case.failure(let error):
+                print("Error fetching categories: \(error)")
+            }
+        }
     }
 }
 
