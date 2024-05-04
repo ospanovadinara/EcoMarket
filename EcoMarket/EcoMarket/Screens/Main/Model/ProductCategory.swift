@@ -5,7 +5,7 @@
 //  Created by Dinara on 02.05.2024.
 //
 
-import UIKit
+import Foundation
 
 struct ProductCategory: Decodable {
     let id: Int

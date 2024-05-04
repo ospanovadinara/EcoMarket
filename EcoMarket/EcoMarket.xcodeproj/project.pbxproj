@@ -32,6 +32,8 @@
 		27CA299C2BE369E80078A172 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA299B2BE369E80078A172 /* Alamofire */; };
 		27CA299E2BE369E80078A172 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 27CA299D2BE369E80078A172 /* AlamofireDynamic */; };
 		27CA29A12BE371E10078A172 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29A02BE371E10078A172 /* MainPresenter.swift */; };
+		27CA29A82BE37CA70078A172 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29A72BE37CA70078A172 /* Product.swift */; };
+		27CA29AA2BE380710078A172 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29A92BE380700078A172 /* ProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		27CA29942BE364480078A172 /* MainHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeader.swift; sourceTree = "<group>"; };
 		27CA29972BE366380078A172 /* ProductCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategoryService.swift; sourceTree = "<group>"; };
 		27CA29A02BE371E10078A172 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		27CA29A72BE37CA70078A172 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		27CA29A92BE380700078A172 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				27CA29792BE1100B0078A172 /* Main */,
+				27CA29A22BE37C5D0078A172 /* Product */,
 				27CA297A2BE110190078A172 /* Basket */,
 				27CA297B2BE110250078A172 /* History */,
 				27CA297C2BE1102E0078A172 /* Info */,
@@ -203,6 +208,47 @@
 			isa = PBXGroup;
 			children = (
 				27CA29A02BE371E10078A172 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		27CA29A22BE37C5D0078A172 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29A32BE37C830078A172 /* Model */,
+				27CA29A42BE37C880078A172 /* View */,
+				27CA29A62BE37C990078A172 /* Presenter */,
+				27CA29A52BE37C8F0078A172 /* Service */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		27CA29A32BE37C830078A172 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29A72BE37CA70078A172 /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27CA29A42BE37C880078A172 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29A92BE380700078A172 /* ProductViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27CA29A52BE37C8F0078A172 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		27CA29A62BE37C990078A172 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -296,11 +342,13 @@
 				27583E5A2BE0F64600F490F9 /* TabBarViewController.swift in Sources */,
 				27583E772BE1061C00F490F9 /* Colors.swift in Sources */,
 				27583E752BE1044300F490F9 /* Fonts.swift in Sources */,
+				27CA29AA2BE380710078A172 /* ProductViewController.swift in Sources */,
 				27CA29852BE110D90078A172 /* InfoViewController.swift in Sources */,
 				27CA29952BE364480078A172 /* MainHeader.swift in Sources */,
 				27CA29982BE366380078A172 /* ProductCategoryService.swift in Sources */,
 				27583E602BE0F64600F490F9 /* EcoMarket.xcdatamodeld in Sources */,
 				27583E562BE0F64600F490F9 /* AppDelegate.swift in Sources */,
+				27CA29A82BE37CA70078A172 /* Product.swift in Sources */,
 				27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */,
 				27CA29A12BE371E10078A172 /* MainPresenter.swift in Sources */,
 				27CA298E2BE35DBB0078A172 /* ProductCategory.swift in Sources */,

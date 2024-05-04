@@ -128,7 +128,8 @@ extension MainViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       //TODO
+        let viewController = ProductViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
