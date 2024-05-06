@@ -18,8 +18,6 @@ final class ProductViewController: UIViewController {
     var mainPresenter: MainPresenter?
     var productPresenter: ProductPresenter?
     private var selectedCategory: ProductCategory?
-    private var categories: [ProductCategory] = []
-    private var products: [Product] = []
 
     // MARK: - UI
     private lazy var searchImageView: UIImageView = {
@@ -107,6 +105,14 @@ final class ProductViewController: UIViewController {
         return image
     }()
 
+    init(selectedCategory: ProductCategory?) {
+        self.selectedCategory = selectedCategory
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -206,16 +212,15 @@ extension ProductViewController {
     func setupMainPresenter() {
         mainPresenter = MainPresenter()
         mainPresenter?.view = self
-        mainPresenter?.viewDidLoad()
+        mainPresenter?.getCategories()
     }
 
     func setupProductPresenter() {
         if let category = selectedCategory {
             productPresenter = ProductPresenter(selectedCategory: category)
-
         }
         productPresenter?.view = self
-        productPresenter?.viewDidLoad()
+        productPresenter?.getProducts()
     }
 }
 
@@ -257,6 +262,8 @@ extension ProductViewController: UICollectionViewDataSource {
             }
             if let category = mainPresenter?.categories[indexPath.item] {
                 cell.configureCell(title: category.name)
+                let isSelected = category.id == selectedCategory?.id
+                cell.updateBackgroundColor(isSelected: isSelected)
             }
 
             return cell

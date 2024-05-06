@@ -72,4 +72,14 @@ extension CategoryCell {
     public func configureCell(title: String) {
             label.text = title
     }
+
+    public func updateBackgroundColor(isSelected: Bool) {
+        if isSelected {
+            view.backgroundColor = Colors.green.uiColor
+            label.textColor = Colors.white.uiColor
+        } else {
+            view.backgroundColor = .clear
+            label.textColor = Colors.gray.uiColor
+        }
+    }
 }

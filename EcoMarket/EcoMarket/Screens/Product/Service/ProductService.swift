@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - ProductServiceProtocol
 protocol ProductServiceProtocol {
-    func getProducts(completion: @escaping (Result<[Product], AFError>) -> Void)
+    func getProducts(completion: @escaping (Result<ProductsResponse, AFError>) -> Void)
 }
 
 // MARK: - ProductService Class
@@ -18,7 +18,7 @@ final class ProductService {}
 
 // MARK: - Extension - ProductService
 extension ProductService: ProductServiceProtocol {
-    func getProducts(completion: @escaping (Result<[Product], AFError>) -> Void) {
+    func getProducts(completion: @escaping (Result<ProductsResponse, AFError>) -> Void) {
         var urlComponent = URLComponents()
         urlComponent.scheme = "https"
         urlComponent.host = "neobook.online"
@@ -31,7 +31,7 @@ extension ProductService: ProductServiceProtocol {
 
         AF.request(url, method: .get, headers: ["accept": "application/json"])
             .validate()
-            .responseDecodable(of: [Product].self) { response in
+            .responseDecodable(of: ProductsResponse.self) { response in
                 completion(response.result)
             }
     }

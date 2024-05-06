@@ -21,15 +21,14 @@ final class ProductCell: UICollectionViewCell {
 
     private lazy var imageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "apples_image")
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
+        image.contentMode = .scaleAspectFit
         return image
     }()
 
     private lazy var title: UILabel = {
         let label = UILabel()
-        label.text = "Яблоко красная радуга сладкая"
         label.font = Fonts.medium.s14()
         label.textColor = Colors.black.uiColor
         label.textAlignment = .left
@@ -55,7 +54,7 @@ final class ProductCell: UICollectionViewCell {
 
     lazy var currencyLabel: UILabel = {
         let label = UILabel()
-        label.text = "c"
+        label.text = "тг"
         label.font = Fonts.semibold.s14()
         label.textColor = Colors.green.uiColor
         return label

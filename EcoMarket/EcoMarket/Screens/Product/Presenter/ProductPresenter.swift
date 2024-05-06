@@ -9,7 +9,7 @@ import Foundation
 
 protocol ProductPresenterProtocol: AnyObject {
     var view: ProductViewControllerProtocol? { get set }
-    func viewDidLoad()
+    func getProducts()
 }
 
 final class ProductPresenter {
@@ -24,16 +24,16 @@ final class ProductPresenter {
 }
 
 extension ProductPresenter: ProductPresenterProtocol {
-    func viewDidLoad() {
+    func getProducts() {
         productService.getProducts { result in
             switch result {
             case .success(let products):
                 DispatchQueue.main.async { [weak self] in
-                    self?.products = products.filter { $0.category == self?.selectedCategory.id }
+                    self?.products = products.results.filter { $0.category == self?.selectedCategory.id }
                     self?.view?.updateProducts()
                 }
             case.failure(let error):
-                print("Error fetching categories: \(error)")
+                print("Error fetching products: \(error)")
             }
         }
     }

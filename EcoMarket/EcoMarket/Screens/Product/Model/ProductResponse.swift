@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct ProductsResponse: Decodable {
+struct ProductsResponse: Codable {
     let page: Int
-    let count: Int
+    let count: Int?
     let next: String
-    let previous: String
+    let previous: String?
     let results: [Product]
 }

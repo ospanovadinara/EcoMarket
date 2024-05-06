@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainPresenterProtocol: AnyObject {
     var view: MainViewControllerProtocol? { get set }
-    func viewDidLoad()
+    func getCategories()
 }
 
 final class MainPresenter {
@@ -19,7 +19,7 @@ final class MainPresenter {
 }
 
 extension MainPresenter: MainPresenterProtocol {
-    func viewDidLoad() {
+    func getCategories() {
         productCategoryService.getCategories { result in
             switch result {
             case .success(let categories):

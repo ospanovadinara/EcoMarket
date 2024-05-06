@@ -17,6 +17,7 @@ final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
     var mainPresenter: MainPresenter?
+    var selectedCategory: ProductCategory?
 
     // MARK: - UI
     private lazy var layout: UICollectionViewFlowLayout = {
@@ -59,7 +60,7 @@ final class MainViewController: UIViewController {
         setupConstraints()
         mainPresenter = MainPresenter()
         mainPresenter?.view = self
-        mainPresenter?.viewDidLoad()
+        mainPresenter?.getCategories()
     }
 }
 
@@ -128,7 +129,8 @@ extension MainViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = ProductViewController()
+        selectedCategory = mainPresenter?.categories[indexPath.item]
+        let viewController = ProductViewController(selectedCategory: selectedCategory)
         viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
