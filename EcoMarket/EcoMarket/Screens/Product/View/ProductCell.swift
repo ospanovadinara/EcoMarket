@@ -23,7 +23,7 @@ final class ProductCell: UICollectionViewCell {
         let image = UIImageView()
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         return image
     }()
 
