@@ -10,6 +10,7 @@ import Foundation
 protocol ProductPresenterProtocol: AnyObject {
     var view: ProductViewControllerProtocol? { get set }
     func getProducts()
+    func updateSelectedCategory(_ category: ProductCategory)
 }
 
 final class ProductPresenter {
@@ -36,5 +37,10 @@ extension ProductPresenter: ProductPresenterProtocol {
                 print("Error fetching products: \(error)")
             }
         }
+    }
+
+    func updateSelectedCategory(_ category: ProductCategory) {
+        self.selectedCategory = category
+        getProducts()
     }
 }

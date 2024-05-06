@@ -17,7 +17,13 @@ final class ProductViewController: UIViewController {
     // MARK: - Private Properties
     var mainPresenter: MainPresenter?
     var productPresenter: ProductPresenter?
-    private var selectedCategory: ProductCategory?
+    private var selectedCategory: ProductCategory? {
+        didSet {
+            if let selectedCategory = selectedCategory {
+                productPresenter?.updateSelectedCategory(selectedCategory)
+            }
+        }
+    }
 
     // MARK: - UI
     private lazy var searchImageView: UIImageView = {
@@ -301,6 +307,19 @@ extension ProductViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ProductViewController:  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO
+        if collectionView == categoriesCollectionView {
+
+            mainPresenter?.categories.indices.forEach { index in
+                let categoryIndexPath = IndexPath(item: index, section: 0)
+                if let cell = collectionView.cellForItem(at: categoryIndexPath) as? CategoryCell {
+                    cell.updateBackgroundColor(isSelected: false)
+                }
+            }
+
+            guard let selectedCell = collectionView.cellForItem(at: indexPath) as? CategoryCell else { return }
+            selectedCell.updateBackgroundColor(isSelected: true)
+            selectedCategory = mainPresenter?.categories[indexPath.item]
+
+        }
     }
 }
