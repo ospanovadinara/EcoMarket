@@ -9,14 +9,14 @@ import SnapKit
 import UIKit
 
 protocol MainViewControllerProtocol: AnyObject {
-    var presenter: MainPresenter? { get set }
-    func reloadCategories()
+    var mainPresenter: MainPresenter? { get set }
+    func updateCategories()
 }
 
 final class MainViewController: UIViewController {
 
     // MARK: - Private Properties
-    var presenter: MainPresenter?
+    var mainPresenter: MainPresenter?
 
     // MARK: - UI
     private lazy var layout: UICollectionViewFlowLayout = {
@@ -57,9 +57,9 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        presenter = MainPresenter()
-        presenter?.view = self
-        presenter?.viewDidLoad()
+        mainPresenter = MainPresenter()
+        mainPresenter?.view = self
+        mainPresenter?.viewDidLoad()
     }
 }
 
@@ -80,7 +80,7 @@ private extension MainViewController {
 
 // MARK: - MainViewControllerProtocol
 extension MainViewController: MainViewControllerProtocol {
-    func reloadCategories() {
+    func updateCategories() {
         collectionView.reloadData()
     }
 }
@@ -94,7 +94,7 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
 
-        return presenter?.categories.count ?? 0
+        return mainPresenter?.categories.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -104,7 +104,7 @@ extension MainViewController: UICollectionViewDataSource {
             for: indexPath) as? MainViewCell else {
             fatalError("Could not cast to MainViewCell")
         }
-        guard  let model = presenter?.categories[indexPath.item] else {
+        guard  let model = mainPresenter?.categories[indexPath.item] else {
             return UICollectionViewCell()
         }
         cell.configureCell(with: model)
@@ -129,6 +129,7 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewController = ProductViewController()
+        viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

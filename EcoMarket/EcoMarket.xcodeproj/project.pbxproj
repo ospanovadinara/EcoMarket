@@ -18,6 +18,12 @@
 		27583E732BE103B100F490F9 /* TTNormsPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27583E6E2BE1039E00F490F9 /* TTNormsPro-Regular.ttf */; };
 		27583E752BE1044300F490F9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27583E742BE1044300F490F9 /* Fonts.swift */; };
 		27583E772BE1061C00F490F9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27583E762BE1061C00F490F9 /* Colors.swift */; };
+		278337572BE638630003ED0A /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337562BE638630003ED0A /* ProductResponse.swift */; };
+		278337592BE65E5A0003ED0A /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337582BE65E5A0003ED0A /* CategoryCell.swift */; };
+		2783375B2BE65E6C0003ED0A /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783375A2BE65E6C0003ED0A /* ProductCell.swift */; };
+		2783375D2BE66BE50003ED0A /* ProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783375C2BE66BE50003ED0A /* ProductPresenter.swift */; };
+		2783375F2BE66BF70003ED0A /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783375E2BE66BF70003ED0A /* ProductService.swift */; };
+		278337622BE8BDF20003ED0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337612BE8BDF20003ED0A /* String.swift */; };
 		27CA297F2BE110850078A172 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA297E2BE110850078A172 /* MainViewController.swift */; };
 		27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29802BE110A20078A172 /* BasketViewController.swift */; };
 		27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29822BE110C30078A172 /* HistoryViewController.swift */; };
@@ -50,6 +56,12 @@
 		27583E702BE1039E00F490F9 /* TTNormsPro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNormsPro-Medium.ttf"; sourceTree = "<group>"; };
 		27583E742BE1044300F490F9 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		27583E762BE1061C00F490F9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		278337562BE638630003ED0A /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
+		278337582BE65E5A0003ED0A /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		2783375A2BE65E6C0003ED0A /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		2783375C2BE66BE50003ED0A /* ProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresenter.swift; sourceTree = "<group>"; };
+		2783375E2BE66BF70003ED0A /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
+		278337612BE8BDF20003ED0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		27CA297E2BE110850078A172 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		27CA29802BE110A20078A172 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		27CA29822BE110C30078A172 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +115,7 @@
 				27583E592BE0F64600F490F9 /* TabBarViewController.swift */,
 				27CA297D2BE110380078A172 /* Screens */,
 				27583E6C2BE1037F00F490F9 /* Resources */,
+				278337602BE8BDE60003ED0A /* Extensions */,
 				27583E662BE0F64800F490F9 /* Info.plist */,
 				27583E5E2BE0F64600F490F9 /* EcoMarket.xcdatamodeld */,
 			);
@@ -129,6 +142,14 @@
 				27583E6E2BE1039E00F490F9 /* TTNormsPro-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		278337602BE8BDE60003ED0A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				278337612BE8BDF20003ED0A /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		27CA29792BE1100B0078A172 /* Main */ = {
@@ -227,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				27CA29A72BE37CA70078A172 /* Product.swift */,
+				278337562BE638630003ED0A /* ProductResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +256,8 @@
 		27CA29A42BE37C880078A172 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2783375A2BE65E6C0003ED0A /* ProductCell.swift */,
+				278337582BE65E5A0003ED0A /* CategoryCell.swift */,
 				27CA29A92BE380700078A172 /* ProductViewController.swift */,
 			);
 			path = View;
@@ -242,6 +266,7 @@
 		27CA29A52BE37C8F0078A172 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2783375E2BE66BF70003ED0A /* ProductService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -249,6 +274,7 @@
 		27CA29A62BE37C990078A172 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				2783375C2BE66BE50003ED0A /* ProductPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -339,11 +365,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				27CA297F2BE110850078A172 /* MainViewController.swift in Sources */,
+				278337592BE65E5A0003ED0A /* CategoryCell.swift in Sources */,
+				278337622BE8BDF20003ED0A /* String.swift in Sources */,
 				27583E5A2BE0F64600F490F9 /* TabBarViewController.swift in Sources */,
 				27583E772BE1061C00F490F9 /* Colors.swift in Sources */,
 				27583E752BE1044300F490F9 /* Fonts.swift in Sources */,
 				27CA29AA2BE380710078A172 /* ProductViewController.swift in Sources */,
 				27CA29852BE110D90078A172 /* InfoViewController.swift in Sources */,
+				278337572BE638630003ED0A /* ProductResponse.swift in Sources */,
 				27CA29952BE364480078A172 /* MainHeader.swift in Sources */,
 				27CA29982BE366380078A172 /* ProductCategoryService.swift in Sources */,
 				27583E602BE0F64600F490F9 /* EcoMarket.xcdatamodeld in Sources */,
@@ -353,8 +382,11 @@
 				27CA29A12BE371E10078A172 /* MainPresenter.swift in Sources */,
 				27CA298E2BE35DBB0078A172 /* ProductCategory.swift in Sources */,
 				27CA29902BE362BF0078A172 /* MainViewCell.swift in Sources */,
+				2783375B2BE65E6C0003ED0A /* ProductCell.swift in Sources */,
 				27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */,
+				2783375F2BE66BF70003ED0A /* ProductService.swift in Sources */,
 				27583E582BE0F64600F490F9 /* SceneDelegate.swift in Sources */,
+				2783375D2BE66BE50003ED0A /* ProductPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,7 +25,7 @@ extension MainPresenter: MainPresenterProtocol {
             case .success(let categories):
                 DispatchQueue.main.async { [weak self] in
                     self?.categories = categories
-                    self?.view?.reloadCategories()
+                    self?.view?.updateCategories()
                 }
             case.failure(let error):
                 print("Error fetching categories: \(error)")
