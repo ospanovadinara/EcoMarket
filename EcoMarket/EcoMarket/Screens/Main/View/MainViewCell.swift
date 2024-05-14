@@ -11,7 +11,7 @@ import UIKit
 
 final class MainViewCell: UICollectionViewCell {
     // MARK: - UI
-    lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true

@@ -24,6 +24,10 @@
 		2783375D2BE66BE50003ED0A /* ProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783375C2BE66BE50003ED0A /* ProductPresenter.swift */; };
 		2783375F2BE66BF70003ED0A /* ProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783375E2BE66BF70003ED0A /* ProductService.swift */; };
 		278337622BE8BDF20003ED0A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337612BE8BDF20003ED0A /* String.swift */; };
+		278337672BF112870003ED0A /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337662BF112870003ED0A /* BottomSheetViewController.swift */; };
+		278337692BF116A30003ED0A /* MockProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337682BF116A30003ED0A /* MockProduct.swift */; };
+		2783376B2BF117AE0003ED0A /* BottomSheetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783376A2BF117AE0003ED0A /* BottomSheetViewCell.swift */; };
+		2783376E2BF1DCA80003ED0A /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 2783376D2BF1DCA80003ED0A /* PanModal */; };
 		27CA297F2BE110850078A172 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA297E2BE110850078A172 /* MainViewController.swift */; };
 		27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29802BE110A20078A172 /* BasketViewController.swift */; };
 		27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29822BE110C30078A172 /* HistoryViewController.swift */; };
@@ -62,6 +66,9 @@
 		2783375C2BE66BE50003ED0A /* ProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresenter.swift; sourceTree = "<group>"; };
 		2783375E2BE66BF70003ED0A /* ProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductService.swift; sourceTree = "<group>"; };
 		278337612BE8BDF20003ED0A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		278337662BF112870003ED0A /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		278337682BF116A30003ED0A /* MockProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProduct.swift; sourceTree = "<group>"; };
+		2783376A2BF117AE0003ED0A /* BottomSheetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewCell.swift; sourceTree = "<group>"; };
 		27CA297E2BE110850078A172 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		27CA29802BE110A20078A172 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		27CA29822BE110C30078A172 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +89,7 @@
 			files = (
 				27CA29932BE3638B0078A172 /* Kingfisher in Frameworks */,
 				27CA299C2BE369E80078A172 /* Alamofire in Frameworks */,
+				2783376E2BF1DCA80003ED0A /* PanModal in Frameworks */,
 				27CA299E2BE369E80078A172 /* AlamofireDynamic in Frameworks */,
 				27CA29892BE35D780078A172 /* SnapKit in Frameworks */,
 				27CA298B2BE35D780078A172 /* SnapKit-Dynamic in Frameworks */,
@@ -152,6 +160,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		278337652BF112760003ED0A /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				278337682BF116A30003ED0A /* MockProduct.swift */,
+				2783376A2BF117AE0003ED0A /* BottomSheetViewCell.swift */,
+				278337662BF112870003ED0A /* BottomSheetViewController.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
 		27CA29792BE1100B0078A172 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +210,7 @@
 			children = (
 				27CA29792BE1100B0078A172 /* Main */,
 				27CA29A22BE37C5D0078A172 /* Product */,
+				278337652BF112760003ED0A /* BottomSheet */,
 				27CA297A2BE110190078A172 /* Basket */,
 				27CA297B2BE110250078A172 /* History */,
 				27CA297C2BE1102E0078A172 /* Info */,
@@ -301,6 +320,7 @@
 				27CA29922BE3638B0078A172 /* Kingfisher */,
 				27CA299B2BE369E80078A172 /* Alamofire */,
 				27CA299D2BE369E80078A172 /* AlamofireDynamic */,
+				2783376D2BF1DCA80003ED0A /* PanModal */,
 			);
 			productName = EcoMarket;
 			productReference = 27583E522BE0F64600F490F9 /* EcoMarket.app */;
@@ -334,6 +354,7 @@
 				27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				27CA29912BE3638B0078A172 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				27CA299A2BE369E80078A172 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2783376C2BF1DCA80003ED0A /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = 27583E532BE0F64600F490F9 /* Products */;
 			projectDirPath = "";
@@ -371,6 +392,8 @@
 				27583E772BE1061C00F490F9 /* Colors.swift in Sources */,
 				27583E752BE1044300F490F9 /* Fonts.swift in Sources */,
 				27CA29AA2BE380710078A172 /* ProductViewController.swift in Sources */,
+				278337672BF112870003ED0A /* BottomSheetViewController.swift in Sources */,
+				278337692BF116A30003ED0A /* MockProduct.swift in Sources */,
 				27CA29852BE110D90078A172 /* InfoViewController.swift in Sources */,
 				278337572BE638630003ED0A /* ProductResponse.swift in Sources */,
 				27CA29952BE364480078A172 /* MainHeader.swift in Sources */,
@@ -379,6 +402,7 @@
 				27583E562BE0F64600F490F9 /* AppDelegate.swift in Sources */,
 				27CA29A82BE37CA70078A172 /* Product.swift in Sources */,
 				27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */,
+				2783376B2BF117AE0003ED0A /* BottomSheetViewCell.swift in Sources */,
 				27CA29A12BE371E10078A172 /* MainPresenter.swift in Sources */,
 				27CA298E2BE35DBB0078A172 /* ProductCategory.swift in Sources */,
 				27CA29902BE362BF0078A172 /* MainViewCell.swift in Sources */,
@@ -599,6 +623,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2783376C2BF1DCA80003ED0A /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
+			};
+		};
 		27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -626,6 +658,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2783376D2BF1DCA80003ED0A /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2783376C2BF1DCA80003ED0A /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
+		};
 		27CA29882BE35D780078A172 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 27CA29872BE35D770078A172 /* XCRemoteSwiftPackageReference "SnapKit" */;

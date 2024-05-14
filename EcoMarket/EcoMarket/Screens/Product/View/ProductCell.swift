@@ -10,6 +10,8 @@ import UIKit
 
 final class ProductCell: UICollectionViewCell {
     private var productCount = 0
+    private var productPresenter: ProductPresenter?
+    var didTapAddButton: (() -> Void)?
 
     // MARK: - UI
     private lazy var view: UIView = {
@@ -52,7 +54,7 @@ final class ProductCell: UICollectionViewCell {
         return label
     }()
 
-    lazy var currencyLabel: UILabel = {
+    private lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.text = "тг"
         label.font = Fonts.semibold.s14()
@@ -214,11 +216,21 @@ private extension ProductCell {
     }
 
     @objc func addButtonDidTap() {
+        productCount += 1
+
+        didTapAddButton?()
+
         addButton.isHidden = true
         plusButton.isHidden = false
         minusButton.isHidden = false
         counterLabel.isHidden = false
         counterLabel.text = "\(productCount)"
+
+        if let presenter = productPresenter,
+           var product = presenter.products.first(where: { $0.title == title.text }) {
+            presenter.addToBasket(product: product)
+            presenter.products = presenter.selectedProducts
+        }
     }
 }
 
@@ -235,6 +247,8 @@ extension ProductCell {
         if let price = Double(priceString) {
             let priceInteger = Int(price)
             priceLabel.text = "\(priceInteger)"
+
+            print("Price: \(priceInteger)")
         } else {
             priceLabel.text = "Not founded"
         }

@@ -7,21 +7,27 @@
 
 import SnapKit
 import UIKit
+import PanModal
 
-protocol ProductViewControllerProtocol: AnyObject {
+protocol ProductViewControllerDelegate: AnyObject {
+    func updateBasketCounter()
+}
+
+protocol ProductViewControllerProtocol: AnyObject, ProductViewControllerDelegate {
     var productPresenter: ProductPresenter? { get set }
     func updateProducts()
 }
 
 final class ProductViewController: UIViewController {
-    // MARK: - Private Properties
+
     var mainPresenter: MainPresenter?
     var productPresenter: ProductPresenter?
+
+    // MARK: - Private Properties
+    private var basketCount = 0
     private var selectedCategory: ProductCategory? {
         didSet {
-            if let selectedCategory = selectedCategory {
-                productPresenter?.updateSelectedCategory(selectedCategory)
-            }
+           updateSelectedCategory()
         }
     }
 
@@ -111,6 +117,13 @@ final class ProductViewController: UIViewController {
         return image
     }()
 
+    private lazy var basketCounter: UILabel = {
+        let label = UILabel()
+        label.font = Fonts.medium.s16()
+        label.textColor = .white
+        return label
+    }()
+
     init(selectedCategory: ProductCategory?) {
         self.selectedCategory = selectedCategory
         super.init(nibName: nil, bundle: nil)
@@ -148,7 +161,8 @@ private extension ProductViewController {
          categoriesCollectionView,
          productsCollectionView,
          basketButton,
-         basketLabel
+         basketLabel,
+         basketCounter
         ].forEach {
             view.addSubview($0)
         }
@@ -192,6 +206,11 @@ private extension ProductViewController {
             make.centerY.equalTo(basketImage.snp.centerY)
         }
 
+        basketCounter.snp.makeConstraints { make in
+            make.leading.equalTo(basketLabel.snp.trailing).offset(3)
+            make.centerY.equalTo(basketLabel.snp.centerY)
+        }
+
         basketButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-50)
@@ -202,7 +221,8 @@ private extension ProductViewController {
 
     // MARK: - Actions
     @objc func basketButtonDidTap() {
-        //TODO
+        let viewController = BottomSheetViewController()
+        self.presentPanModal(viewController)
     }
 
     @objc func backButtonDidTap() {
@@ -211,6 +231,12 @@ private extension ProductViewController {
 
     @objc func searchButtonDidTap() {
         //TODO
+    }
+
+    func updateSelectedCategory() {
+        if let selectedCategory = selectedCategory {
+            productPresenter?.updateSelectedCategory(selectedCategory)
+        }
     }
 }
 
@@ -230,7 +256,6 @@ extension ProductViewController {
     }
 }
 
-
 extension ProductViewController: MainViewControllerProtocol {
     func updateCategories() {
         categoriesCollectionView.reloadData()
@@ -241,6 +266,12 @@ extension ProductViewController: MainViewControllerProtocol {
 extension ProductViewController: ProductViewControllerProtocol {
     func updateProducts() {
         productsCollectionView.reloadData()
+    }
+
+    func updateBasketCounter() {
+        let totalPrice = productPresenter?.calculateTotalPrice() ?? 0
+        basketCounter.text = "\(totalPrice) тг"
+        print("Total price:\(totalPrice)")
     }
 }
 
@@ -282,6 +313,11 @@ extension ProductViewController: UICollectionViewDataSource {
             if let model = productPresenter?.products[indexPath.item] {
                 cell.configureCell(with: model)
             }
+
+            cell.didTapAddButton = { [weak self] in
+                self?.updateBasketCounter()
+            }
+
             return cell
         }
 
@@ -319,7 +355,6 @@ extension ProductViewController:  UICollectionViewDelegate, UICollectionViewDele
             guard let selectedCell = collectionView.cellForItem(at: indexPath) as? CategoryCell else { return }
             selectedCell.updateBackgroundColor(isSelected: true)
             selectedCategory = mainPresenter?.categories[indexPath.item]
-
         }
     }
 }

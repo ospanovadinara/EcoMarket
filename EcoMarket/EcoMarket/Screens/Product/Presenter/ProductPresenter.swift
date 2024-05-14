@@ -17,8 +17,10 @@ final class ProductPresenter {
     weak var view: ProductViewControllerProtocol?
     private var productService = ProductService()
     private var selectedCategory: ProductCategory
-    var products: [Product] = []
 
+    var products: [Product] = []
+    var selectedProducts: [Product] = []
+    
     init(selectedCategory: ProductCategory) {
         self.selectedCategory = selectedCategory
     }
@@ -42,5 +44,29 @@ extension ProductPresenter: ProductPresenterProtocol {
     func updateSelectedCategory(_ category: ProductCategory) {
         self.selectedCategory = category
         getProducts()
+    }
+}
+
+extension ProductPresenter {
+    func calculateTotalPrice() -> Int {
+        var totalPrice: Int = 0
+        for product in selectedProducts {
+            if let price = Double(product.price) {
+                totalPrice += product.quantity * Int(price)
+            }
+        }
+
+        return totalPrice
+    }
+
+    func addToBasket(product: Product) {
+        if let index = selectedProducts.firstIndex(where: { $0.id == product.id }) {
+            selectedProducts[index].quantity += 1
+        } else {
+            var newProduct = product
+            newProduct.quantity = 1
+            selectedProducts.append(newProduct)
+        }
+        view?.updateBasketCounter()
     }
 }
