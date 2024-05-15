@@ -28,6 +28,7 @@
 		278337692BF116A30003ED0A /* MockProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337682BF116A30003ED0A /* MockProduct.swift */; };
 		2783376B2BF117AE0003ED0A /* BottomSheetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2783376A2BF117AE0003ED0A /* BottomSheetViewCell.swift */; };
 		2783376E2BF1DCA80003ED0A /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 2783376D2BF1DCA80003ED0A /* PanModal */; };
+		278337732BF373910003ED0A /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278337722BF373910003ED0A /* DescriptionViewController.swift */; };
 		27CA297F2BE110850078A172 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA297E2BE110850078A172 /* MainViewController.swift */; };
 		27CA29812BE110A20078A172 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29802BE110A20078A172 /* BasketViewController.swift */; };
 		27CA29832BE110C30078A172 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29822BE110C30078A172 /* HistoryViewController.swift */; };
@@ -69,6 +70,7 @@
 		278337662BF112870003ED0A /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		278337682BF116A30003ED0A /* MockProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProduct.swift; sourceTree = "<group>"; };
 		2783376A2BF117AE0003ED0A /* BottomSheetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewCell.swift; sourceTree = "<group>"; };
+		278337722BF373910003ED0A /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		27CA297E2BE110850078A172 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		27CA29802BE110A20078A172 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		27CA29822BE110C30078A172 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 			children = (
 				27583E552BE0F64600F490F9 /* AppDelegate.swift */,
 				27583E572BE0F64600F490F9 /* SceneDelegate.swift */,
-				27583E592BE0F64600F490F9 /* TabBarViewController.swift */,
+				278337702BF373100003ED0A /* TabBar */,
 				27CA297D2BE110380078A172 /* Screens */,
 				27583E6C2BE1037F00F490F9 /* Resources */,
 				278337602BE8BDE60003ED0A /* Extensions */,
@@ -160,17 +162,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		278337652BF112760003ED0A /* BottomSheet */ = {
+		278337652BF112760003ED0A /* BasketBottomSheet */ = {
 			isa = PBXGroup;
 			children = (
 				278337682BF116A30003ED0A /* MockProduct.swift */,
 				2783376A2BF117AE0003ED0A /* BottomSheetViewCell.swift */,
 				278337662BF112870003ED0A /* BottomSheetViewController.swift */,
 			);
-			path = BottomSheet;
+			path = BasketBottomSheet;
 			sourceTree = "<group>";
 		};
-		27CA29792BE1100B0078A172 /* Main */ = {
+		2783376F2BF3729F0003ED0A /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				27CA298C2BE35DA60078A172 /* Model */,
@@ -181,39 +183,64 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		27CA297A2BE110190078A172 /* Basket */ = {
+		278337702BF373100003ED0A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				27583E592BE0F64600F490F9 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		278337712BF373500003ED0A /* ProductDescription */ = {
+			isa = PBXGroup;
+			children = (
+				278337722BF373910003ED0A /* DescriptionViewController.swift */,
+			);
+			path = ProductDescription;
+			sourceTree = "<group>";
+		};
+		27CA29792BE1100B0078A172 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				2783376F2BF3729F0003ED0A /* Main */,
+				27CA29A22BE37C5D0078A172 /* Product */,
+				278337652BF112760003ED0A /* BasketBottomSheet */,
+				278337712BF373500003ED0A /* ProductDescription */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		27CA297A2BE110190078A172 /* BasketTab */ = {
 			isa = PBXGroup;
 			children = (
 				27CA29802BE110A20078A172 /* BasketViewController.swift */,
 			);
-			path = Basket;
+			path = BasketTab;
 			sourceTree = "<group>";
 		};
-		27CA297B2BE110250078A172 /* History */ = {
+		27CA297B2BE110250078A172 /* HistoryTab */ = {
 			isa = PBXGroup;
 			children = (
 				27CA29822BE110C30078A172 /* HistoryViewController.swift */,
 			);
-			path = History;
+			path = HistoryTab;
 			sourceTree = "<group>";
 		};
-		27CA297C2BE1102E0078A172 /* Info */ = {
+		27CA297C2BE1102E0078A172 /* InfoTab */ = {
 			isa = PBXGroup;
 			children = (
 				27CA29842BE110D90078A172 /* InfoViewController.swift */,
 			);
-			path = Info;
+			path = InfoTab;
 			sourceTree = "<group>";
 		};
 		27CA297D2BE110380078A172 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				27CA29792BE1100B0078A172 /* Main */,
-				27CA29A22BE37C5D0078A172 /* Product */,
-				278337652BF112760003ED0A /* BottomSheet */,
-				27CA297A2BE110190078A172 /* Basket */,
-				27CA297B2BE110250078A172 /* History */,
-				27CA297C2BE1102E0078A172 /* Info */,
+				27CA29792BE1100B0078A172 /* MainTab */,
+				27CA297A2BE110190078A172 /* BasketTab */,
+				27CA297B2BE110250078A172 /* HistoryTab */,
+				27CA297C2BE1102E0078A172 /* InfoTab */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -386,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27CA297F2BE110850078A172 /* MainViewController.swift in Sources */,
+				278337732BF373910003ED0A /* DescriptionViewController.swift in Sources */,
 				278337592BE65E5A0003ED0A /* CategoryCell.swift in Sources */,
 				278337622BE8BDF20003ED0A /* String.swift in Sources */,
 				27583E5A2BE0F64600F490F9 /* TabBarViewController.swift in Sources */,

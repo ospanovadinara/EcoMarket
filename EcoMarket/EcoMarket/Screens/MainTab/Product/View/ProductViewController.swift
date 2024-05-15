@@ -344,7 +344,6 @@ extension ProductViewController: UICollectionViewDataSource {
 extension ProductViewController:  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoriesCollectionView {
-
             mainPresenter?.categories.indices.forEach { index in
                 let categoryIndexPath = IndexPath(item: index, section: 0)
                 if let cell = collectionView.cellForItem(at: categoryIndexPath) as? CategoryCell {
@@ -355,6 +354,9 @@ extension ProductViewController:  UICollectionViewDelegate, UICollectionViewDele
             guard let selectedCell = collectionView.cellForItem(at: indexPath) as? CategoryCell else { return }
             selectedCell.updateBackgroundColor(isSelected: true)
             selectedCategory = mainPresenter?.categories[indexPath.item]
+        } else if collectionView == productsCollectionView {
+            let viewController = DescriptionViewController()
+            self.presentPanModal(viewController)
         }
     }
 }

@@ -1,26 +1,27 @@
 //
-//  ProductCell.swift
+//  ProductDescriptionViewController.swift
 //  EcoMarket
 //
-//  Created by Dinara on 04.05.2024.
+//  Created by Dinara on 14.05.2024.
 //
-import Kingfisher
-import SnapKit
-import UIKit
 
-final class ProductCell: UICollectionViewCell {
+import UIKit
+import SnapKit
+import PanModal
+
+final class DescriptionViewController: UIViewController {
     private var productCount = 0
-    private var productPresenter: ProductPresenter?
-    var didTapAddButton: (() -> Void)?
+    private lazy var selectedProducts: [MockProduct] = [
+        MockProduct(
+            id: 1,
+            title: "Яблоко золотая радуга",
+            description: "Cочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.",
+            image: UIImage(named: "apples_image") ?? UIImage(),
+            price: "56"
+        )
+    ]
 
     // MARK: - UI
-    private lazy var view: UIView = {
-        let view = UIView()
-        view.backgroundColor = Colors.lightGray.uiColor
-        view.layer.cornerRadius = 16
-        return view
-    }()
-
     private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -29,10 +30,20 @@ final class ProductCell: UICollectionViewCell {
         return image
     }()
 
-    private lazy var title: UILabel = {
+    private lazy var label: UILabel = {
         let label = UILabel()
-        label.font = Fonts.medium.s14()
+        label.font = Fonts.semibold.s24()
         label.textColor = Colors.black.uiColor
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = Fonts.regular.s16()
+        label.textColor = Colors.lightGray.uiColor
         label.textAlignment = .left
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -42,13 +53,13 @@ final class ProductCell: UICollectionViewCell {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 4
+        stackView.spacing = 8
         return stackView
     }()
 
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.font = Fonts.semibold.s20()
+        label.font = Fonts.semibold.s24()
         label.textColor = Colors.green.uiColor
         label.textAlignment = .left
         return label
@@ -56,10 +67,17 @@ final class ProductCell: UICollectionViewCell {
 
     private lazy var currencyLabel: UILabel = {
         let label = UILabel()
-        label.text = "тг"
-        label.font = Fonts.semibold.s14()
+        label.text = "тг шт"
+        label.font = Fonts.semibold.s24()
         label.textColor = Colors.green.uiColor
         return label
+    }()
+
+    private lazy var priceStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 2
+        return stackView
     }()
 
     private lazy var addButton: UIButton = {
@@ -73,6 +91,14 @@ final class ProductCell: UICollectionViewCell {
                          action: #selector(addButtonDidTap),
                          for: .touchUpInside)
         return button
+    }()
+
+    private lazy var totalLabel: UILabel = {
+        let label = UILabel()
+        label.font = Fonts.semibold.s24()
+        label.textColor = Colors.black.uiColor
+        label.textAlignment = .left
+        return label
     }()
 
     private lazy var minusButton: UIButton = {
@@ -111,80 +137,65 @@ final class ProductCell: UICollectionViewCell {
         label.isHidden = true
         return label
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
-private extension ProductCell {
+private extension DescriptionViewController {
     func setupViews() {
+        [priceLabel,
+         currencyLabel
+        ].forEach {
+            priceStackView.addArrangedSubview($0)
+        }
+
         [imageView,
-        title
-        ].forEach { stackView.addArrangedSubview($0) }
+         label,
+         priceStackView,
+         descriptionLabel
+        ].forEach {
+            stackView.addArrangedSubview($0)
+        }
 
         [stackView,
-         priceLabel,
-         currencyLabel,
          addButton,
          minusButton,
          plusButton,
          counterLabel
-        ].forEach { view.addSubview($0)}
-
-        contentView.addSubview(view)
+        ].forEach { 
+            view.addSubview($0)
+        }
     }
 
     func setupConstraints() {
-        contentView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(228)
-            make.width.equalTo(166)
-        }
-
-        view.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-
-        stackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(4)
-            make.leading.equalToSuperview().offset(4)
-            make.trailing.equalToSuperview().offset(-4)
-        }
-
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(96)
         }
 
-        priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(24)
-            make.leading.equalToSuperview().offset(4)
-            make.bottom.equalTo(addButton.snp.top).offset(-16)
-        }
-
-        currencyLabel.snp.makeConstraints { make in
-            make.leading.equalTo(priceLabel.snp.trailing).offset(2)
-            make.bottom.equalTo(priceLabel.snp.bottom)
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
 
         addButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-50)
+            make.height.equalTo(54)
+        }
+
+        totalLabel.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(4)
-            make.trailing.equalToSuperview().offset(-4)
-            make.bottom.equalToSuperview().offset(-4)
-            make.height.equalTo(32)
+            make.bottom.equalTo(addButton.snp.top).offset(-16)
         }
 
         minusButton.snp.makeConstraints { make in
@@ -218,7 +229,7 @@ private extension ProductCell {
     @objc func addButtonDidTap() {
         productCount += 1
 
-        didTapAddButton?()
+//        didTapAddButton?()
 
         addButton.isHidden = true
         plusButton.isHidden = false
@@ -226,37 +237,24 @@ private extension ProductCell {
         counterLabel.isHidden = false
         counterLabel.text = "\(productCount)"
 
-        if let presenter = productPresenter,
-           var product = presenter.products.first(where: { $0.title == title.text }) {
-            presenter.addToBasket(product: product)
-            presenter.products = presenter.selectedProducts
-        }
+//        if let presenter = productPresenter,
+//           var product = presenter.products.first(where: { $0.title == title.text }) {
+//            presenter.addToBasket(product: product)
+//            presenter.products = presenter.selectedProducts
+//        }
     }
 }
 
-extension ProductCell {
-    // MARK: - Public properties
-    public static let cellID = String(describing: ProductCell.self)
+extension DescriptionViewController: PanModalPresentable {
+    var panScrollable: UIScrollView? {
+        return nil
+    }
 
-    // MARK: - Public Methods
-    public func configureCell(with model: Product) {
-        title.text = model.title
-        let priceString = model.price
-        let imageUrl = model.image
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(519)
+    }
 
-        if let price = Double(priceString) {
-            let priceInteger = Int(price)
-            priceLabel.text = "\(priceInteger)"
-
-            print("Price: \(priceInteger)")
-        } else {
-            priceLabel.text = "Not founded"
-        }
-
-        if let url = URL(string: imageUrl) {
-            imageView.kf.setImage(with: url)
-        } else {
-            imageView.image = nil
-        }
+    var longFormHeight: PanModalHeight {
+        return .maxHeightWithTopInset(5)
     }
 }
