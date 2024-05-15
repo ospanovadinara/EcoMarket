@@ -11,21 +11,13 @@ import PanModal
 
 final class DescriptionViewController: UIViewController {
     private var productCount = 0
-    private lazy var selectedProducts: [MockProduct] = [
-        MockProduct(
-            id: 1,
-            title: "Яблоко золотая радуга",
-            description: "Cочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.",
-            image: UIImage(named: "apples_image") ?? UIImage(),
-            price: "56"
-        )
-    ]
 
     // MARK: - UI
     private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
+        image.image = UIImage(named: "apples_image")
         image.contentMode = .scaleAspectFill
         return image
     }()
@@ -36,6 +28,7 @@ final class DescriptionViewController: UIViewController {
         label.textColor = Colors.black.uiColor
         label.textAlignment = .left
         label.numberOfLines = 0
+        label.text = "Яблоко золотая радуга"
         label.lineBreakMode = .byWordWrapping
         return label
     }()
@@ -43,7 +36,8 @@ final class DescriptionViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = Fonts.regular.s16()
-        label.textColor = Colors.lightGray.uiColor
+        label.text = "Cочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков."
+        label.textColor = Colors.gray.uiColor
         label.textAlignment = .left
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -53,7 +47,7 @@ final class DescriptionViewController: UIViewController {
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 12
         return stackView
     }()
 
@@ -61,6 +55,7 @@ final class DescriptionViewController: UIViewController {
         let label = UILabel()
         label.font = Fonts.semibold.s24()
         label.textColor = Colors.green.uiColor
+        label.text = "56"
         label.textAlignment = .left
         return label
     }()
@@ -97,7 +92,9 @@ final class DescriptionViewController: UIViewController {
         let label = UILabel()
         label.font = Fonts.semibold.s24()
         label.textColor = Colors.black.uiColor
+        label.text = "112 тг"
         label.textAlignment = .left
+        label.isHidden = true
         return label
     }()
 
@@ -110,7 +107,6 @@ final class DescriptionViewController: UIViewController {
         button.setTitle("-", for: .normal)
         button.tintColor = .white
         button.backgroundColor = Colors.green.uiColor
-        button.isHidden = true
         return button
     }()
 
@@ -124,7 +120,6 @@ final class DescriptionViewController: UIViewController {
         button.setTitle("+", for: .normal)
         button.tintColor = .white
         button.backgroundColor = Colors.green.uiColor
-        button.isHidden = true
         return button
     }()
 
@@ -134,10 +129,17 @@ final class DescriptionViewController: UIViewController {
         label.font = Fonts.medium.s18()
         label.textColor = Colors.black.uiColor
         label.textAlignment = .center
-        label.isHidden = true
         return label
     }()
-    
+
+    private lazy var quantityStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 41
+        stackView.isHidden = true
+        return stackView
+    }()
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +150,8 @@ final class DescriptionViewController: UIViewController {
 
 private extension DescriptionViewController {
     func setupViews() {
+        view.backgroundColor = .systemBackground
+        
         [priceLabel,
          currencyLabel
         ].forEach {
@@ -155,28 +159,33 @@ private extension DescriptionViewController {
         }
 
         [imageView,
-         label,
-         priceStackView,
-         descriptionLabel
+         label
         ].forEach {
             stackView.addArrangedSubview($0)
         }
 
+        [minusButton,
+         counterLabel,
+         plusButton
+        ].forEach {
+            quantityStackView.addArrangedSubview($0)
+        }
+
         [stackView,
+         priceStackView,
+         descriptionLabel,
          addButton,
-         minusButton,
-         plusButton,
-         counterLabel
-        ].forEach { 
+         totalLabel,
+         quantityStackView
+        ].forEach {
             view.addSubview($0)
         }
     }
 
     func setupConstraints() {
         imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(96)
+            make.height.equalTo(208)
+            make.width.equalTo(343)
         }
 
         stackView.snp.makeConstraints { make in
@@ -185,34 +194,33 @@ private extension DescriptionViewController {
             make.trailing.equalToSuperview().offset(-16)
         }
 
-        addButton.snp.makeConstraints { make in
+        priceStackView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(16)
+        }
+
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(priceStackView.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-50)
+        }
+
+        addButton.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(24)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(54)
         }
 
         totalLabel.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(24)
-            make.leading.equalToSuperview().offset(4)
-            make.bottom.equalTo(addButton.snp.top).offset(-16)
+            make.leading.equalToSuperview().offset(16)
+            make.centerY.equalTo(quantityStackView.snp.centerY)
         }
 
-        minusButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(4)
-            make.bottom.equalToSuperview().offset(-4)
+        quantityStackView.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(37)
+            make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(32)
-        }
-
-        plusButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-4)
-            make.bottom.equalToSuperview().offset(-4)
-            make.height.equalTo(32)
-        }
-
-        counterLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(plusButton.snp.centerY)
-            make.centerX.equalToSuperview()
         }
     }
 
@@ -229,19 +237,10 @@ private extension DescriptionViewController {
     @objc func addButtonDidTap() {
         productCount += 1
 
-//        didTapAddButton?()
-
         addButton.isHidden = true
-        plusButton.isHidden = false
-        minusButton.isHidden = false
-        counterLabel.isHidden = false
+        totalLabel.isHidden = false
+        quantityStackView.isHidden = false
         counterLabel.text = "\(productCount)"
-
-//        if let presenter = productPresenter,
-//           var product = presenter.products.first(where: { $0.title == title.text }) {
-//            presenter.addToBasket(product: product)
-//            presenter.products = presenter.selectedProducts
-//        }
     }
 }
 
