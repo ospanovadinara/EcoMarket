@@ -153,7 +153,6 @@ final class BasketViewController: UIViewController {
 
 private extension BasketViewController {
     // MARK: - Setup Navigation
-
     func setupNavigationaBar() {
         navigationItem.title = "Корзина"
         navigationItem.leftBarButtonItem = clearButton

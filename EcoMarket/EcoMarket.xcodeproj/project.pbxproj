@@ -201,6 +201,15 @@
 			path = ProductDescription;
 			sourceTree = "<group>";
 		};
+		27A2E1692BF75405006B4A87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27A2E1672BF72CE6006B4A87 /* BasketCell.swift */,
+				27CA29802BE110A20078A172 /* BasketViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		27CA29792BE1100B0078A172 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,8 +224,7 @@
 		27CA297A2BE110190078A172 /* BasketTab */ = {
 			isa = PBXGroup;
 			children = (
-				27A2E1672BF72CE6006B4A87 /* BasketCell.swift */,
-				27CA29802BE110A20078A172 /* BasketViewController.swift */,
+				27A2E1692BF75405006B4A87 /* View */,
 			);
 			path = BasketTab;
 			sourceTree = "<group>";
