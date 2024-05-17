@@ -224,7 +224,6 @@ private extension DescriptionViewController {
         }
     }
 
-
     // MARK: - Actions
     @objc func minusButtonDidTap() {
         //TODO
