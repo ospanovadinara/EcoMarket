@@ -44,4 +44,5 @@ enum Colors: String, ColorsProtocol {
     case green = "75DB1B"
     case lightGray = "F8F8F8"
     case white = "FFFFFF"
+    case red = "ED2929"
 }

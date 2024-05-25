@@ -1,14 +1,14 @@
 //
-//  BottomSheetViewCell.swift
+//  BasketCell.swift
 //  EcoMarket
 //
-//  Created by Dinara on 12.05.2024.
+//  Created by Dinara on 17.05.2024.
 //
 
 import UIKit
 import SnapKit
 
-final class BottomSheetViewCell: UICollectionViewCell {
+final class BasketCell: UITableViewCell {
     // MARK: - UI
     private lazy var background: UIView = {
         let view = UIView()
@@ -17,11 +17,11 @@ final class BottomSheetViewCell: UICollectionViewCell {
         return view
     }()
 
-    private lazy var imageView: UIImageView = {
+    private lazy var image: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.layer.cornerRadius = 16
+        image.layer.cornerRadius = 8
         return image
     }()
 
@@ -85,6 +85,15 @@ final class BottomSheetViewCell: UICollectionViewCell {
         return button
     }()
 
+    private lazy var counterLabel: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.font = Fonts.medium.s18()
+        label.textColor = Colors.black.uiColor
+        label.textAlignment = .center
+        return label
+    }()
+
     private lazy var plusButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -98,15 +107,6 @@ final class BottomSheetViewCell: UICollectionViewCell {
         return button
     }()
 
-    private lazy var counterLabel: UILabel = {
-        let label = UILabel()
-        label.text = "1"
-        label.font = Fonts.medium.s18()
-        label.textColor = Colors.black.uiColor
-        label.textAlignment = .center
-        return label
-    }()
-
     private lazy var quantityStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -114,11 +114,9 @@ final class BottomSheetViewCell: UICollectionViewCell {
         return stackView
     }()
 
-  
-
     // MARK: - Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupConstraints()
     }
@@ -128,8 +126,7 @@ final class BottomSheetViewCell: UICollectionViewCell {
     }
 }
 
-// MARK: - Private Extension - BottomSheetViewCell
-private extension BottomSheetViewCell {
+private extension BasketCell {
     // MARK: - Setup Views
     func setupViews() {
         [title,
@@ -151,7 +148,7 @@ private extension BottomSheetViewCell {
             quantityStackView.addArrangedSubview($0)
         }
 
-        [imageView,
+        [image,
          stackView,
          priceStackView,
          quantityStackView
@@ -171,13 +168,13 @@ private extension BottomSheetViewCell {
                 UIEdgeInsets(
                     top: 0,
                     left: 16,
-                    bottom: 0,
+                    bottom: 12,
                     right: 16
                 )
             )
         }
 
-        imageView.snp.makeConstraints { make in
+        image.snp.makeConstraints { make in
             make.top.equalTo(background.snp.top).offset(4)
             make.leading.equalTo(background.snp.leading).offset(4)
             make.height.equalTo(86)
@@ -185,14 +182,14 @@ private extension BottomSheetViewCell {
         }
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.top).offset(4)
-            make.leading.equalTo(imageView.snp.trailing).offset(8)
+            make.top.equalTo(image.snp.top).offset(4)
+            make.leading.equalTo(image.snp.trailing).offset(8)
             make.height.equalTo(35)
         }
 
         priceStackView.snp.makeConstraints { make in
-            make.leading.equalTo(imageView.snp.trailing).offset(8)
-            make.bottom.equalTo(imageView.snp.bottom).offset(-4)
+            make.leading.equalTo(image.snp.trailing).offset(8)
+            make.bottom.equalTo(image.snp.bottom).offset(-4)
             make.height.equalTo(15)
         }
 
@@ -213,17 +210,16 @@ private extension BottomSheetViewCell {
     }
 }
 
-
-// MARK: - Extension - BottomSheetViewCell
-extension BottomSheetViewCell {
+// MARK: - Extension - BasketCell
+extension BasketCell {
     // MARK: - Public Properties
-    public static let id = String(describing: BottomSheetViewCell.self)
+    public static let id = String(describing: BasketCell.self)
 
     // MARK: - Public Methods
     public func configureCell(with model: MockProduct) {
         title.text = model.title
         descriptionLabel.text = model.description
         priceLabel.text = model.price
-        imageView.image = model.image
+        image.image = model.image
     }
 }
