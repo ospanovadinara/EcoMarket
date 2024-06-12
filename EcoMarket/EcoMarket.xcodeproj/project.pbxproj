@@ -210,6 +210,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		27A2E16A2BF76B07006B4A87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27CA29842BE110D90078A172 /* InfoViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		27CA29792BE1100B0078A172 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +248,7 @@
 		27CA297C2BE1102E0078A172 /* InfoTab */ = {
 			isa = PBXGroup;
 			children = (
-				27CA29842BE110D90078A172 /* InfoViewController.swift */,
+				27A2E16A2BF76B07006B4A87 /* View */,
 			);
 			path = InfoTab;
 			sourceTree = "<group>";
